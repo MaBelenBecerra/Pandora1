@@ -1,0 +1,64 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void input_vector4x4(vector<vector<int>>& vector4x4);
+void input_vectoretwas4(vector<int>& vector_etwas4);
+void calculate_ergebnis(vector<int>& matriz_ergebnis, const vector<int>& vector_etwas4, const vector<vector<int>>& vector4x4);
+void show(const vector<int>& matriz_ergebnis);
+
+int main(){
+    vector<vector<int>> vector4x4;
+    vector<int> vector_etwas4;
+    vector<int> matriz_ergebnis;
+    
+    input_vector4x4(vector4x4);
+    input_vectoretwas4(vector_etwas4);
+    calculate_ergebnis(matriz_ergebnis, vector_etwas4, vector4x4);
+    show(matriz_ergebnis);
+    
+    return 0;
+}
+
+void input_vector4x4(vector<vector<int>>& vector4x4) {
+    vector4x4.resize(4, vector<int>(4));
+    
+    for(int k = 0; k < 4; ++k) {
+        for (int i = 0; i < 4; ++i) {
+            cout << "Ingrese el valor de la fila " << k + 1 << " columna " << i + 1 << ": ";
+            cin >> vector4x4[k][i];
+        }
+    }
+}
+
+void input_vectoretwas4(vector<int>& vector_etwas4){
+    vector_etwas4.resize(4);
+    
+    for (int i = 0; i < 4; ++i) {
+        cout << "Ingrese el valor " << i + 1 << ": ";
+        cin >> vector_etwas4[i];
+    }
+}
+
+void calculate_ergebnis(vector<int>& matriz_ergebnis, const vector<int>& vector_etwas4, const vector<vector<int>>& vector4x4){
+    for (int i = 0; i < 4; ++i){
+        int suma = 0;
+        
+        for (int k = 0; k < 4; ++k){
+            suma += vector4x4[i][k] * vector_etwas4[k];
+        }
+        
+        matriz_ergebnis.push_back(suma);
+    }
+}
+
+void show(const vector<int>& matriz_ergebnis){
+    for (int valor : matriz_ergebnis) {
+        cout << valor << " ";
+    }
+}
+
+//Я заливаю глаза керосином
+//Пусть всё горит, пусть всё горит
+//На меня смотрит вся Россия
+//Пусть всё горит, пусть всё горит
